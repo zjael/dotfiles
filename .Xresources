@@ -10,8 +10,10 @@
 !#-------------#
 !#-- Scaling --#
 !#-------------#
-Xft.dpi: 96
-rofi.dpi: 96
+Xft.dpi: 168
+rofi.dpi: 168
+!#Xft.dpi: 96
+!#rofi.dpi: 96
 Xcursor.size: 32
 
 !#----------#

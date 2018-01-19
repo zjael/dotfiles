@@ -1,0 +1,85 @@
+!  ██     ██                                                                        
+! ░░██   ██                                                                         
+!  ░░██ ██   ██████  █████   ██████  ██████  ██   ██ ██████  █████   █████   ██████ 
+!   ░░███   ░░██░░█ ██░░░██ ██░░░░  ██░░░░██░██  ░██░░██░░█ ██░░░██ ██░░░██ ██░░░░  
+!    ██░██   ░██ ░ ░███████░░█████ ░██   ░██░██  ░██ ░██ ░ ░██  ░░ ░███████░░█████  
+!   ██ ░░██  ░██   ░██░░░░  ░░░░░██░██   ░██░██  ░██ ░██   ░██   ██░██░░░░  ░░░░░██ 
+!  ██   ░░██░███   ░░██████ ██████ ░░██████ ░░██████░███   ░░█████ ░░██████ ██████  
+! ░░ ░░ ░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░░░░ ░░░ ░░░░░ ░░░░░░ ░░░░░░ 
+
+!#-------------#
+!#-- Scaling --#
+!#-------------#
+Xft.dpi: 96
+rofi.dpi: 96
+Xcursor.size: 32
+
+!#----------#
+!#-- Xft ---#
+!#----------#
+Xft.autohint: false
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: true
+Xft.antialias: true
+Xft.rgba: rgb
+
+!#-----------#
+!#-- URxvt --#
+!#-----------#
+URxvt.color0:   #292a44
+URxvt.color1:   #6dfedf
+URxvt.color2:   #e88e2c
+URxvt.color3:   #ae81ff
+URxvt.color4:   #ff6f9f
+URxvt.color5:   #7aa5ff
+URxvt.color6:   #ed4781
+URxvt.color7:   #678bdc
+
+URxvt.color8:   #6dfedf
+URxvt.color9:   #e88e2c
+URxvt.color10:  #ae81ff 
+URxvt.color11:  #ffbc69
+URxvt.color12:  #ff6f9f
+URxvt.color13:  #ff6f9f
+URxvt.color14:  #ed4781
+URxvt.color15:  #e88e2c
+
+URxvt.background: #292a44
+URxvt.foreground: #678bdc
+
+URxvt.intensityStyles: false
+URxvt.allow_bold: false
+URxvt.font: xft:Boxxy:style=Regular:size=9
+URxvt.boldFont: xft:Boxxy:style=Bold:size=9
+URxvt*letterSpace: -2
+
+URxvt.depth: 0
+URxvt.shading: 30
+URxvt.scrollBar: false
+URxvt.cursorBlink: true
+URxvt.internalBorder: 30
+URxvt.cursorUnderline : true
+URxvt.cursorColor : #2de0a7
+URxvt.thickness : 5
+
+!#----------#
+!#-- Rofi --#
+!#----------#
+rofi.color-enabled: true
+rofi.color-window: #002b37, #002b37, #dbe6ec
+rofi.color-normal: #002b37, #eceff1, #07313D, #006699, #ffffff
+rofi.color-active: #002b37, #ffc107, #07313D, #006699, #ffc107
+rofi.color-urgent: #002b37, #da4281, #07313D, #006699, #da4281
+
+rofi.font: Boxxy 9
+rofi.fullscreen: false
+rofi.sidebar-mode: true
+rofi.width: 30
+rofi.padding: 10
+rofi.location: 0
+rofi.lines: 10
+rofi.bw: 2
+rofi.fixed-visible-lines: false
+rofi.fixed-num-lines: false
+rofi.modi: window,drun,run,ssh

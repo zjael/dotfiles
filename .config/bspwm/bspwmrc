@@ -1,0 +1,37 @@
+#! /bin/sh
+
+# Put wallpaper here, without quotes and usind escape character before spaces
+# ex. ~/Pictures/Somethig\ with\ spaces.jpg
+wallpaper=~/Pictures/Wallpapers/bykfesvilpmz.png
+
+$HOME/.bin/i3lock-bls -u "$wallpaper" &
+feh --bg-fill $wallpaper &
+xss-lock -- $HOME/.bin/i3lock-bls -l dimblur &
+compton -cb 
+nm-applet &
+redshift &
+caffeine &
+mpd 
+sxhkd &
+$HOME/.config/polybar/launch_polybar.sh &
+
+bspc monitor -d one two three four five six seven
+
+bspc config border_width         4
+bspc config normal_border_color  "#191919"
+bspc config focused_border_color "#6f6f6f"
+bspc config window_gap           8
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      false
+bspc config single_monocle       true
+bspc config click_to_focus	     true
+
+# Rule examples
+bspc rule -a Zathura state=tiled
+#bspc rule -a Gimp desktop='^8' state=floating follow=on
+#bspc rule -a Chromium desktop='^2'
+#bspc rule -a mplayer2 state=floating
+#bspc rule -a Kupfer.py focus=on
+#bspc rule -a Screenkey manage=off

@@ -172,6 +172,46 @@ visual_bell:
 # Background opacity
 background_opacity: 1.0
 
+# Mouse bindings
+#
+# Currently doesn't support modifiers. Both the `mouse` and `action` fields must
+# be specified.
+#
+# Values for `mouse`:
+# - Middle
+# - Left
+# - Right
+# - Numeric identifier such as `5`
+#
+# Values for `action`:
+# - Paste
+# - PasteSelection
+# - Copy (TODO)
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+hide_cursor_when_typing: false
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+# Shell
+#
+# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
+# Entries in shell.args are passed unmodified as arguments to the shell.
+shell:
+  program: /bin/zsh
+  #program: /usr/bin/tmux
+#  args:
+#    - --login
+
 # Key bindings
 #
 # Each binding is defined as an object with some properties. Most of the
@@ -214,16 +254,24 @@ key_bindings:
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
+  - { key: Key0,     mods: Control, action: ResetFontSize                }
+  - { key: Equals,   mods: Control, action: IncreaseFontSize             }
+  - { key: Subtract, mods: Control, action: DecreaseFontSize             }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
   - { key: End,                     chars: "\x1b[F",   mode: ~AppCursor  }
   - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~"                   }
-  #- { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                   }
+  - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                   }
   - { key: PageUp,                  chars: "\x1b[5~"                     }
   - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~"                   }
-  #- { key: PageDown, mods: Control, chars: "\x1b[6;5~"                   }
+  - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                   }
   - { key: PageDown,                chars: "\x1b[6~"                     }
+  - { key: Tab,      mods: Shift,   chars: "\x1b[Z"                      }
+  - { key: Back,                    chars: "\x7f"                        }
+  - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                    }
+  - { key: Insert,                  chars: "\x1b[2~"                     }
+  - { key: Delete,                  chars: "\x1b[3~"                     }
   - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                   }
   - { key: Left,     mods: Control, chars: "\x1b[1;5D"                   }
   - { key: Left,     mods: Alt,     chars: "\x1b[1;3D"                   }
@@ -244,7 +292,6 @@ key_bindings:
   - { key: Down,     mods: Alt,     chars: "\x1b[1;3B"                   }
   - { key: Down,                    chars: "\x1b[B",   mode: ~AppCursor  }
   - { key: Down,                    chars: "\x1bOB",   mode: AppCursor   }
-  - { key: Tab,      mods: Shift,   chars: "\x1b[Z"                      }
   - { key: F1,                      chars: "\x1bOP"                      }
   - { key: F2,                      chars: "\x1bOQ"                      }
   - { key: F3,                      chars: "\x1bOR"                      }
@@ -257,47 +304,3 @@ key_bindings:
   - { key: F10,                     chars: "\x1b[21~"                    }
   - { key: F11,                     chars: "\x1b[23~"                    }
   - { key: F12,                     chars: "\x1b[24~"                    }
-  - { key: Back,                    chars: "\x7f"                        }
-  - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                    }
-  - { key: Insert,                  chars: "\x1b[2~"                     }
-  - { key: Delete,                  chars: "\x1b[3~"                     }
-
-# Mouse bindings
-#
-# Currently doesn't support modifiers. Both the `mouse` and `action` fields must
-# be specified.
-#
-# Values for `mouse`:
-# - Middle
-# - Left
-# - Right
-# - Numeric identifier such as `5`
-#
-# Values for `action`:
-# - Paste
-# - PasteSelection
-# - Copy (TODO)
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
-
-mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-
-selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-hide_cursor_when_typing: false
-
-# Live config reload (changes require restart)
-live_config_reload: true
-
-# Shell
-#
-# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
-# Entries in shell.args are passed unmodified as arguments to the shell.
-shell:
-  program: /bin/zsh
-  #program: /usr/bin/tmux
-#  args:
-#    - --login

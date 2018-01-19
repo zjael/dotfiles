@@ -147,35 +147,35 @@ install_packages() {
 
     local packages=''
     # System utilities
-    packages+='networkmanager openssh lm_sensors thermald curl wget htop nethogs udevil rar unrar scrot neofetch rsync'
+    packages+=' networkmanager openssh lm_sensors thermald curl wget htop nethogs udevil rar unrar scrot neofetch rsync'
 
     # Terminal
-    packages+='alacritty-git tree xclip ranger thefuck micro'
-    packages+='fzf jq chkservice jrnl howdoi'
+    packages+=' alacritty-git tree xclip ranger thefuck micro'
+    packages+=' fzf jq chkservice jrnl howdoi'
 
     # Development
-    packages+='git tig'
-    packages+='python python-pip python-setuptools python-virtualenv'
-    packages+='nodejs npm'
+    packages+=' git tig'
+    packages+=' python python-pip python-setuptools python-virtualenv'
+    packages+=' nodejs npm'
 
     # Security
-    packages+='lynis'
+    packages+=' lynis'
 
     # Xorg
-    packages+='xorg xorg-xinit xbacklight'
+    packages+=' xorg xorg-xinit xbacklight'
 
     # Desktop
-    packages+='surf spotify xclip cups'
+    packages+=' surf spotify xclip cups'
 
     # For Fun
-    packages+='cowsay lolcat fortune-mod'
+    packages+=' cowsay lolcat fortune-mod'
 
     # Enviroment
-    packages+='bspwm polybar sxhkd'
-    packages+='stow redshift rofi nitrogen compton dunst'
+    packages+=' bspwm polybar sxhkd'
+    packages+=' stow redshift rofi nitrogen compton dunst'
 
     # Themes
-    packages+='equilux-theme papirus-icon-theme'
+    packages+=' equilux-theme papirus-icon-theme'
 
     # Fonts
     packages+=''

@@ -1,0 +1,163 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: Cartograph CF Nerd Font, monospace;
+  font-weight: bold;
+  font-size: 1.2rem;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(21, 18, 27, 0);
+  color: #cdd6f4;
+}
+
+tooltip {
+  background: #1e1e2e;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #11111b;
+}
+
+#workspaces button {
+  padding: 10px;
+  color: #3b3b4e;
+  margin-right: 5px;
+}
+
+#workspaces button.active {
+  color: #a6adc8;
+}
+
+#workspaces button.focused {
+  color: #a6adc8;
+  background: #eba0ac;
+  border-radius: 10px;
+}
+
+#workspaces button.urgent {
+  color: #11111b;
+  background: #a6e3a1;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background: #11111b;
+  color: #cdd6f4;
+}
+
+#custom-launcher,
+#custom-updates,
+#custom-settings,
+#window,
+#taskbar,
+#cpu,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#backlight {
+  background: #1e1e2e;
+  padding: 0px 10px;
+  margin: 3px 0px;
+  border: 1px solid #181825;
+  margin-top: 5px;
+}
+
+#window {
+  font-size: 1rem;
+}
+
+#taskbar {
+  padding: 0;
+  border-radius: 10px;
+}
+
+#taskbar button:hover {
+  background: #fab387;
+  border-radius: 10px;
+}
+
+#taskbar button.active {
+  background-color: #3b3b4e;
+  border-radius: 10px;
+}
+
+#tray {
+  background-color: #1e1e2e;
+  padding: 0px 0.8rem 0px 0.8rem;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  border-radius: 10px;
+}
+
+#custom-launcher {
+  border-radius: 10px 0px 0px 10px;
+  margin-left: 5px;
+}
+
+#custom-settings {
+  font-size: 1.3rem;
+  color:#89b4fa;
+  border-radius: 10px;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+
+#workspaces {
+  background: #1e1e2e;
+  border-radius: 0px 10px 10px 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#custom-caffeine {
+  color: #89dceb;
+  border-radius: 10px 0px 0px 10px;
+  border-right: 0px;
+  margin-left: 10px;
+}
+
+#custom-updates {
+  color: #f5c2e7;
+  margin-left: 0.2rem;
+  border-radius: 10px;
+}
+
+#window {
+  border-radius: 10px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+#clock {
+  color: #fab387;
+  margin-right: 5px;
+  border-radius: 10px;
+}
+
+#cpu {
+  color: #fab387;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#network {
+  color: #f9e2af;
+}
+
+#pulseaudio {
+  color: #89b4fa;
+}
+
+#pulseaudio.microphone {
+  color: #cba6f7;
+}
+
+#battery {
+  color: #a6e3a1;
+  border-radius: 10px 0px 0px 10px;
+}

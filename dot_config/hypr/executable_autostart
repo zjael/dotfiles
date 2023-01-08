@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+
+# variables
+config=$HOME/.config/hypr
+scripts=$config/scripts
+background=$config/wallpapers/chill.jpg
+
+# notification daemon
+dunst &
+
+# waybar
+$scripts/launch_waybar &
+#$scripts/tools/dynamic &
+
+# wallpaper
+swww query || swww init
+swww img $background --transition-fps 60 --transition-type grow --transition-pos 0.854,0.977 --transition-duration 2 &
+
+$scripts/lock &
+
+# other
+wlsunset -S 8:00 -s 19:30 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &

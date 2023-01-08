@@ -1,0 +1,62 @@
+window {
+    font-family: Cartograph CF Nerd Font, monospace;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 2px;
+    border: 1px solid rgba(41, 49, 70, 0.75);
+    background-color: rgba(26, 33, 50, 0.75);
+    border-radius: 8px;
+}
+
+#input {
+    padding: 4px;
+    margin: 4px;
+    border: none;
+    color: #d8caac;
+    background-color: rgba(26, 33, 50, 0.75);
+   	outline: none;
+}
+
+#inner-box {
+    margin: 4px;
+    border: 0px solid;
+    background-color: rgba(0,0,0,0);
+    border-radius: 8px;
+}
+
+#outer-box {
+    margin: 2px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,0);
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text, #text:selected {
+    margin-left: 0.8rem;
+}
+
+#text:selected {
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+}
+
+#entry {
+    color: #d8ccac;
+    margin: 0px 0px;
+    border: none;
+    border-radius: 0px;
+    background-color: transparent;
+}
+
+#entry:selected {
+    margin: 0px 0px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(26, 33, 50, 0.75);
+}

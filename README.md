@@ -9,6 +9,6 @@
 
 ```bash
 brew install stow
-cd .dotfiles
+cd dotfiles
 stow .
 ```

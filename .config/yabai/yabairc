@@ -1,0 +1,76 @@
+#!/usr/bin/env sh
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Global settings
+yabai -m config mouse_follows_focus          on
+yabai -m config focus_follows_mouse          autofocus
+yabai -m config window_origin_display        default
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               on # floating windows are always on top (default: off)
+yabai -m config window_shadow                on # show shadows only for floating windows
+yabai -m config window_opacity               off
+yabai -m config window_opacity_duration      0.0
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.90
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               alt
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config mouse_drop_action            swap
+
+# Testing
+yabai -m config window_animation_duration   0.05
+
+# General space settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  15
+yabai -m config bottom_padding               15
+yabai -m config left_padding                 15
+yabai -m config right_padding                15
+yabai -m config window_gap                   15
+
+# Spaces
+yabai -m space 1 --label main
+yabai -m space 2 --label browser
+yabai -m space 3 --label utility
+yabai -m space 4 --label extra
+
+# Signals
+# yabai -m signal --add event=display_added action=""
+# yabai -m signal --add event=display_removed action=""
+
+# Rules
+yabai -m rule --add app=".*" layer=normal manage=off
+yabai -m rule --add app="^Settings$" title=".*" layer=above manage=off
+yabai -m rule --add app="^System Settings$" layer=above manage=off
+yabai -m rule --add app="^App Store$" layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" layer=above manage=off
+yabai -m rule --add app="^Archive Utility$" layer=above manage=off
+yabai -m rule --add app="^Disk Utility$" layer=above manage=off
+yabai -m rule --add app="^System Preferences$" layer=above manage=off
+yabai -m rule --add app="^System Information$" layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" layer=above manage=off
+yabai -m rule --add app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off layer=above
+yabai -m rule --add app="^Calculator$" layer=above manage=off
+yabai -m rule --add app="^Dictionary$" layer=above manage=off
+yabai -m rule --add app="^Music$" layer=above manage=off
+
+yabai -m rule --add app="Raycast" sticky=on layer=above manage=off
+yabai -m rule --add app="^Bitwarden$" sticky=on layer=above manage=off
+yabai -m rule --add app="^Secretive$" layer=above manage=off
+yabai -m rule --add app="^Toggl Track$" layer=above manage=off
+yabai -m rule --add app="^Arc$" subrole='AXSystemDialog' manage=off
+yabai -m rule --add app='^Arc$' title='^Space.*$' manage=off
+
+yabai -m rule --add app="^Android Studio$" subrole=AXStandardWindow layer=above manage=off
+yabai -m rule --add app="^Calendar$" layer=above manage=off
+yabai -m rule --add app="^Reminders$" layer=above manage=off
+yabai -m rule --add app="^Discord$" layer=above manage=off
+yabai -m rule --add app="^Steam$" layer=above manage=off
+#yabai -m rule --add app="^Spotify$" layer=above manage=off topmost=on sticky=on
+yabai -m rule --add app="^Bartender 5$" layer=above manage=off
+
+echo "yabai configuration loaded.."

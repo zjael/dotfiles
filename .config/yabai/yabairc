@@ -1,12 +1,29 @@
 #!/usr/bin/env sh
 
+# Load the scripting-addition
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# Non-resizable windows as floating window
+yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".resizable == 0 and .floating == 0" && yabai -m window $YABAI_WINDOW_ID --toggle float'
+
+# Yabai Indicator - https://github.com/xiamaz/YabaiIndicator
+yabai -m signal --add event=mission_control_exit action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_added action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=display_removed action='echo "refresh" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_created action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_destroyed action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_focused action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_moved action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_resized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_minimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+yabai -m signal --add event=window_deminimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
+
 # Global settings
-yabai -m config mouse_follows_focus          on
+yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          autofocus
-yabai -m config window_origin_display        default
+yabai -m config display_arrangement_order    default
+yabai -m config window_origin_display        cursor #default
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               on # floating windows are always on top (default: off)
 yabai -m config window_shadow                on # show shadows only for floating windows
@@ -19,7 +36,7 @@ yabai -m config auto_balance                 off
 yabai -m config mouse_modifier               alt
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
-yabai -m config mouse_drop_action            swap
+yabai -m config mouse_drop_action            stack
 
 # Testing
 yabai -m config window_animation_duration   0.05
@@ -38,39 +55,37 @@ yabai -m space 2 --label browser
 yabai -m space 3 --label utility
 yabai -m space 4 --label extra
 
-# Signals
-# yabai -m signal --add event=display_added action=""
-# yabai -m signal --add event=display_removed action=""
-
 # Rules
-yabai -m rule --add app=".*" layer=normal manage=off
-yabai -m rule --add app="^Settings$" title=".*" layer=above manage=off
-yabai -m rule --add app="^System Settings$" layer=above manage=off
-yabai -m rule --add app="^App Store$" layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" layer=above manage=off
-yabai -m rule --add app="^Archive Utility$" layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" layer=above manage=off
-yabai -m rule --add app="^System Preferences$" layer=above manage=off
-yabai -m rule --add app="^System Information$" layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" layer=above manage=off
-yabai -m rule --add app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off layer=above
-yabai -m rule --add app="^Calculator$" layer=above manage=off
-yabai -m rule --add app="^Dictionary$" layer=above manage=off
-yabai -m rule --add app="^Music$" layer=above manage=off
+yabai -m rule --add app=".*" sub-layer=normal
 
-yabai -m rule --add app="Raycast" sticky=on layer=above manage=off
-yabai -m rule --add app="^Bitwarden$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Secretive$" layer=above manage=off
-yabai -m rule --add app="^Toggl Track$" layer=above manage=off
+yabai -m rule --add app="^Settings$" title=".*" sub-layer=above manage=off
+yabai -m rule --add app="^System Settings$" sub-layer=above manage=off
+yabai -m rule --add app="^App Store$" sub-layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" sub-layer=above manage=off
+yabai -m rule --add app="^Archive Utility$" sub-layer=above manage=off
+yabai -m rule --add app="^Disk Utility$" sub-layer=above manage=off
+yabai -m rule --add app="^System Preferences$" sub-layer=above manage=off
+yabai -m rule --add app="^System Information$" sub-layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" sub-layer=above manage=off
+yabai -m rule --add app="^Finder$" manage=off sub-layer=above
+yabai -m rule --add app="^Calculator$" sub-layer=above manage=off
+yabai -m rule --add app="^Dictionary$" sub-layer=above manage=off
+yabai -m rule --add app="^Music$" sub-layer=above manage=off
+
+yabai -m rule --add app="Raycast" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Bitwarden$" sticky=on sub-layer=above manage=off
+yabai -m rule --add app="^Secretive$" sub-layer=above manage=off
+yabai -m rule --add app="^Toggl Track$" sub-layer=above manage=off
 yabai -m rule --add app="^Arc$" subrole='AXSystemDialog' manage=off
 yabai -m rule --add app='^Arc$' title='^Space.*$' manage=off
 
-yabai -m rule --add app="^Android Studio$" subrole=AXStandardWindow layer=above manage=off
-yabai -m rule --add app="^Calendar$" layer=above manage=off
-yabai -m rule --add app="^Reminders$" layer=above manage=off
-yabai -m rule --add app="^Discord$" layer=above manage=off
-yabai -m rule --add app="^Steam$" layer=above manage=off
-#yabai -m rule --add app="^Spotify$" layer=above manage=off topmost=on sticky=on
-yabai -m rule --add app="^Bartender 5$" layer=above manage=off
+yabai -m rule --add app="^Android Studio$" subrole=AXStandardWindow sub-layer=above manage=off
+yabai -m rule --add app="^Calendar$" sub-layer=above manage=off
+yabai -m rule --add app="^Reminders$" sub-layer=above manage=off
+yabai -m rule --add app="^Discord$" sub-layer=above manage=off
+yabai -m rule --add app="^Steam$" sub-layer=above manage=off
+yabai -m rule --add app="^Spotify$" sub-layer=above manage=off topmost=on sticky=on
+yabai -m rule --add app="^Bartender 5$" sub-layer=above manage=off
+yabai -m rule --add app="^Linear$" sub-layer=above manage=off
 
 echo "yabai configuration loaded.."

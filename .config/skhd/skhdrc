@@ -30,28 +30,30 @@ shift + alt + ctrl - right : yabai -m window --warp east
 
 # Resize windows
 lctrl + alt - h : yabai -m window --resize left:-50:0; \
-                  yabai -m window --resize right:-50:0
+  yabai -m window --resize right:-50:0
 lctrl + alt - j : yabai -m window --resize bottom:0:50; \
-                  yabai -m window --resize top:0:50
+  yabai -m window --resize top:0:50
 lctrl + alt - k : yabai -m window --resize top:0:-50; \
-                  yabai -m window --resize bottom:0:-50
+  yabai -m window --resize bottom:0:-50
 lctrl + alt - l : yabai -m window --resize right:50:0; \
-                  yabai -m window --resize left:50:0
+  yabai -m window --resize left:50:0
 lctrl + alt - left : yabai -m window --resize left:-50:0; \
-                  yabai -m window --resize right:-50:0
+  yabai -m window --resize right:-50:0
 lctrl + alt - down : yabai -m window --resize bottom:0:50; \
-                  yabai -m window --resize top:0:50
+  yabai -m window --resize top:0:50
 lctrl + alt - up : yabai -m window --resize top:0:-50; \
-                  yabai -m window --resize bottom:0:-50
+  yabai -m window --resize bottom:0:-50
 lctrl + alt - right : yabai -m window --resize right:50:0; \
-                  yabai -m window --resize left:50:0
+  yabai -m window --resize left:50:0
 
 # rotate tree
 alt - r : yabai -m space --rotate 90
 shift + alt - r : yabai -m space --rotate 270
 
 # toggle window fullscreen zoom
-alt - f : yabai -m window --toggle zoom-fullscreen
+alt - f : yabai -m window --toggle zoom-fullscreen; \
+  yabai -m window --focus "$(yabai -m query --windows --window | jq -er .id)"
+
 shift + alt - f : yabai -m window --toggle native-fullscreen
 
 # alt - s : yabai -m window --toggle

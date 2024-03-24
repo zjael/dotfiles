@@ -4,6 +4,8 @@ shopt -s autocd
 shopt -s histappend
 
 export PATH=$PATH:$HOME/bin
+export PATH=~/.composer/vendor/bin:$PATH
+
 export HISTSIZE=5000
 export HISTFILESIZE=10000
 

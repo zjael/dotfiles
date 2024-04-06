@@ -110,6 +110,14 @@ shift + alt - right : yabai -m window --display prev; yabai -m display --focus p
 shift + cmd - left : yabai -m space --display next || yabai -m space --display prev
 shift + cmd - right : yabai -m space --display prev || yabai -m space --display next
 
+# show all scratchpad windows if inaccessible due to yabai restart or crash
+cmd + alt - r : yabai -m window --scratchpad recover
+
+# toggle scratchpad windows or launch application if not running
+cmd + alt - s : yabai -m window --toggle spotify || open -a Spotify
+cmd + alt - d : yabai -m window --toggle discord || open -a Discord
+cmd + alt - x : yabai -m window --toggle linear || open -a linear
+
 # shortcuts
 cmd - return : open -na iTerm
 cmd + shift - return : code

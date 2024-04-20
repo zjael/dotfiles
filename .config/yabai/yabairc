@@ -64,9 +64,10 @@ yabai -m rule --add app=".*" sub-layer=normal
 ## Scratchpads
 yabai -m rule --add app="^Spotify$" scratchpad=spotify grid=11:11:1:1:9:9
 yabai -m rule --add app="^Discord$" title!="^Discord Updater$" scratchpad=discord grid=11:11:1:1:9:9
-yabai -m rule --add app="^iTerm2$" title="^scratchpad$" scratchpad=iterm grid=11:11:1:1:9:9
+yabai -m rule --add app="^iTerm2$" scratchpad=term grid=11:11:1:1:9:9
 yabai -m rule --add app="^Slack$" scratchpad=slack grid=11:11:1:1:9:9
 yabai -m rule --add app="^Linear$" scratchpad=linear grid=11:11:1:1:9:9
+yabai -m rule --add app="^Morgen$" scratchpad=morgen grid=11:11:1:1:9:9
 
 ## Tools
 yabai -m rule --add app="^Bitwarden$" sticky=on sub-layer=above manage=off grid=11:11:1:1:9:9

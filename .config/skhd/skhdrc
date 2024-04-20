@@ -116,10 +116,13 @@ cmd + alt - r : yabai -m window --scratchpad recover
 # toggle scratchpad windows or launch application if not running
 cmd + alt - s : yabai -m window --toggle spotify || open -a Spotify
 cmd + alt - d : yabai -m window --toggle discord || open -a Discord
-cmd + alt - x : yabai -m window --toggle linear || open -a linear
+cmd - return : yabai -m window --toggle term || open -a iTerm2
+cmd + alt - q : yabai -m window --toggle slack || open -a slack
+cmd + alt - x : yabai -m window --toggle linear || open -a Linear
+cmd + alt - c : yabai -m window --toggle morgen || open -a Morgen
 
 # shortcuts
-cmd - return : open -na iTerm
+#cmd - return : open -na iTerm
 cmd + shift - return : code
 alt - return : open -a Arc
 ctrl + cmd - r : yabai --restart-service && skhd --restart-service

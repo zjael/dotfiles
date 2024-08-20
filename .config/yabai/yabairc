@@ -69,6 +69,17 @@ yabai -m rule --add app="^Slack$" scratchpad=slack grid=11:11:1:1:9:9
 yabai -m rule --add app="^Linear$" scratchpad=linear grid=11:11:1:1:9:9
 yabai -m rule --add app="^Morgen$" scratchpad=morgen grid=11:11:1:1:9:9
 yabai -m rule --add app="^Secretive$" scratchpad=secretive grid=11:11:1:1:9:9
+yabai -m rule --add app="^ChatGPT$" scratchpad=chatgpt grid=11:11:1:1:9:9
+
+### Minimize scratchpads on startup
+yabai -m window spotify --minimize
+yabai -m window discord --minimize
+yabai -m window term --minimize
+yabai -m window slack --minimize
+yabai -m window linear --minimize
+yabai -m window morgen --minimize
+yabai -m window secretive --minimize
+yabai -m window chatgpt --minimize
 
 ## Tools
 yabai -m rule --add app="^Bitwarden$" sticky=on sub-layer=above manage=off grid=11:11:1:1:9:9
@@ -99,11 +110,13 @@ yabai -m rule --add app="^Android Studio$" subrole=AXStandardWindow sub-layer=ab
 yabai -m rule --add app="^Arc$" subrole='AXSystemDialog' manage=off
 yabai -m rule --add app='^Arc$' title='^Space.*$' manage=off
 yabai -m rule --add app='^Arc$' title='^Settings$' manage=off
+yabai -m rule --add --one-shot app="^Arc$" space=browser
 yabai -m rule --add app="^Calendar$" sub-layer=above manage=off
 yabai -m rule --add app="^Reminders$" sub-layer=above manage=off
 yabai -m rule --add app="^Steam$" sub-layer=above manage=off
 yabai -m rule --add app="^Code$" space=primary
 
+# Apply rules
 yabai -m rule --apply
 
 echo "yabai configuration loaded.."

@@ -120,6 +120,7 @@ cmd - return : yabai -m window --toggle term || open -a iTerm2
 cmd + alt - q : yabai -m window --toggle slack || open -a slack
 cmd + alt - x : yabai -m window --toggle linear || open -a Linear
 cmd + alt - c : yabai -m window --toggle morgen || open -a Morgen
+cmd + alt - z : yabai -m window --toggle chatgpt || open -a ChatGPT
 
 # shortcuts
 #cmd - return : open -na iTerm

@@ -114,13 +114,13 @@ shift + cmd - right : yabai -m space --display prev || yabai -m space --display 
 cmd + alt - r : yabai -m window --scratchpad recover
 
 # toggle scratchpad windows or launch application if not running
-cmd + alt - s : yabai -m window --toggle spotify || open -a Spotify
-cmd + alt - d : yabai -m window --toggle discord || open -a Discord
 cmd - return : yabai -m window --toggle term || open -a iTerm2
-cmd + alt - q : yabai -m window --toggle slack || open -a slack
+cmd + alt - s : yabai -m window --toggle spotify || open -a Spotify
 cmd + alt - x : yabai -m window --toggle linear || open -a Linear
 cmd + alt - c : yabai -m window --toggle morgen || open -a Morgen
 cmd + alt - z : yabai -m window --toggle chatgpt || open -a ChatGPT
+cmd + alt - w : yabai -m window --toggle bear || open -a Bear
+cmd + alt - d : if [[ "$(whoami)" == "work" ]]; then yabai -m window --toggle slack || open -a Slack; else yabai -m window --toggle discord || open -a Discord; fi
 
 # shortcuts
 #cmd - return : open -na iTerm

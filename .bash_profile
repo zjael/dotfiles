@@ -39,7 +39,7 @@ if [ ! $(ssh-add -l | grep -o -e id_rsa) ]; then
 fi
 
 # User with admin privileges, used as global homebrew user
-ADMIN=""
+ADMIN="jakob"
 if [ -z "$ADMIN" ]; then
   ADMIN=$(whoami)
 fi

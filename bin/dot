@@ -1,0 +1,49 @@
+#!/bin/bash
+
+DOTFILES_DIR="$HOME/.dotfiles"
+
+if [[ ! $(pwd) == "$DOTFILES_DIR" ]]; then
+  cd "$DOTFILES_DIR" || exit
+fi
+
+function update() {
+  git pull
+  update_brew
+  bash "$DOTFILES_DIR/.scripts/update-yabai-sudoers.sh"
+  echo "All up to date."
+}
+
+function update_brew() {
+  brew update
+  brew upgrade
+  brew cleanup
+}
+
+function bundle() {
+  brew bundle dump --force --brews --casks --taps --file=$DOTFILES_DIR/Brewfile
+  echo "Bundle updated at $DOTFILES_DIR/Brewfile."
+}
+
+OPTIONS_PROVIDED=false
+while getopts ":bp" opt; do
+  case ${opt} in
+  b)
+    OPTIONS_PROVIDED=true
+    bundle
+    ;;
+  p)
+    OPTIONS_PROVIDED=true
+    update
+    ;;
+  ?)
+    echo "Usage: dot [subcommand]
+  -p  Pull latest changes from the repository, update Homebrew, upgrade outdated packages, and clean up old packages.
+  -b  Backup Homebrew packages, casks, and taps to Brewfile."
+    exit 1
+    ;;
+  esac
+done
+
+if [ "$OPTIONS_PROVIDED" = false ]; then
+  update
+fi

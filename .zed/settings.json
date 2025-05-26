@@ -14,6 +14,34 @@
       }
     }
   },
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-blur": true,
+    "catppuccin-icons": true,
+    "csv": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "env": true,
+    "git-firefly": true,
+    "html": true,
+    "kotlin": true,
+    "live-server": true,
+    "log": true,
+    "make": true,
+    "mcp-server-context7": true,
+    "mcp-server-github": true,
+    "mcp-server-sequential-thinking": true,
+    "php": true,
+    "rainbow-csv": true,
+    "scss": true,
+    "snippets": true,
+    "sql": true,
+    "svelte": true,
+    "swift": true,
+    "tailwind-theme": true,
+    "toml": true,
+    "xml": true
+  },
   "features": {
     "edit_prediction_provider": "zed"
   },

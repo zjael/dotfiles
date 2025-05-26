@@ -6,6 +6,10 @@ if [[ ! $(pwd) == "$DOTFILES_DIR" ]]; then
   cd "$DOTFILES_DIR" || exit
 fi
 
+function stow() {
+  stow -d "$DOTFILES_DIR" -t "$HOME" .
+}
+
 function update() {
   git pull
   update_brew
@@ -27,6 +31,10 @@ function bundle() {
 OPTIONS_PROVIDED=false
 while getopts ":bp" opt; do
   case ${opt} in
+  s)
+    OPTIONS_PROVIDED=true
+    stow
+    ;;
   b)
     OPTIONS_PROVIDED=true
     bundle

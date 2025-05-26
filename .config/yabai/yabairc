@@ -16,6 +16,11 @@ minimize_window() {
   yabai -m window $window --minimize
 }
 
+# Make non-resizable windows float, if not floating already
+
+# On window creation, center the window if floating and is the only floating window in the space
+yabai -m signal --add event=window_created action='~/.config/yabai/handle_window.sh "$YABAI_WINDOW_ID"'
+
 # Automatically switch back to sub-layer normal
 yabai -m signal --add event=application_front_switched action="yabai -m window --sub-layer normal"
 
@@ -31,14 +36,22 @@ yabai -m signal --add event=window_resized action='echo "refresh windows" | nc -
 yabai -m signal --add event=window_minimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
 yabai -m signal --add event=window_deminimized action='echo "refresh windows" | nc -U /tmp/yabai-indicator.socket'
 
+# AeroIndicator - https://github.com/rien7/AeroIndicator
+# yabai -m signal --add event=window_focused action='aeroIndicator focus-change'
+# yabai -m signal --add event=window_destroyed action='aeroIndicator focus-change'
+# yabai -m signal --add event=space_changed action='aeroIndicator workspace-change $YABAI_SPACE_INDEX'
+# yabai -m signal --add event=space_created action='aeroIndicator workspace-created-or-destroyed'
+# yabai -m signal --add event=space_destroyed action='aeroIndicator workspace-created-or-destroyed'
+
 # Global settings
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse autofocus
 yabai -m config display_arrangement_order default
-yabai -m config window_origin_display cursor #default
+yabai -m config window_origin_display default
 yabai -m config window_placement second_child
-yabai -m config window_topmost on # floating windows are always on top (default: off)
-yabai -m config window_shadow on # show shadows only for floating windows
+yabai -m config window_zoom_persist on
+yabai -m config window_topmost on
+yabai -m config window_shadow on
 yabai -m config window_opacity off
 yabai -m config window_opacity_duration 0.0
 yabai -m config active_window_opacity 1.0
@@ -66,11 +79,14 @@ yabai -m space 3 --label secondary
 yabai -m space 4 --label extra
 
 # Base rules
-yabai -m rule --add app=".*" label="Normal layer" sub-layer=normal
-yabai -m rule --add --one-shot app=".*" space=extra
+yabai -m rule --add app=".*" sub-layer=normal
+yabai -m rule --add --one-shot app=".*" space=secondary
+yabai -m rule --add title="(Copy|Bin|About This Mac|Info)" manage=off
+yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off
+
+# Space rules
 yabai -m rule --apply app="^Code$" space=primary
 yabai -m rule --apply app="^Arc$" space=browser
-yabai -m rule --apply app="^(Morgen|Linear|Bear|ChatGPT)$" space=secondary
 yabai -m rule --apply app="^iTerm2$" space=extra
 
 # Scratchpads
@@ -79,8 +95,7 @@ yabai -m rule --add app="^Discord$" title!="^Discord Updater$" scratchpad=discor
 yabai -m rule --add app="^iTerm2$" scratchpad=term grid=11:11:1:1:9:9
 yabai -m rule --add app="^Slack$" scratchpad=slack grid=11:11:1:1:9:9
 yabai -m rule --add app="^Linear$" scratchpad=linear grid=11:11:1:1:9:9
-yabai -m rule --add app="^Morgen$" scratchpad=morgen grid=11:11:1:1:9:9
-yabai -m rule --add app="^ChatGPT$" scratchpad=chatgpt grid=11:11:1:1:9:9
+yabai -m rule --add app="^BoltAI$" scratchpad=ai grid=11:11:1:1:9:9
 yabai -m rule --add app="^Bear$" scratchpad=bear grid=11:11:1:1:9:9
 
 # Floating/unmanaged windows
@@ -92,10 +107,13 @@ yabai -m rule --add app="^Toggl Track$" sub-layer=above manage=off grid=11:11:1:
 yabai -m rule --add app="^Boop$" sub-layer=above manage=off grid=11:11:1:1:9:9
 yabai -m rule --add app="^Pieces$" sub-layer=above manage=off grid=11:11:1:1:9:9
 yabai -m rule --add app="^Messenger$" sub-layer=above manage=off grid=11:11:1:1:9:9
+yabai -m rule --add app="^Shortcuts$" sub-layer=above manage=off grid=11:11:1:1:9:9
+yabai -m rule --add app="^Messages$" sub-layer=above manage=off grid=11:11:1:1:9:9
 
 # System apps / Settings
 yabai -m rule --add app="^Settings$" title=".*" sub-layer=above manage=off
 yabai -m rule --add app="^System Settings$" sub-layer=above manage=off
+yabai -m rule --add app="^About This Mac" sub-layer=above manage=off
 yabai -m rule --add app="^App Store$" sub-layer=above manage=off
 yabai -m rule --add app="^Activity Monitor$" sub-layer=above manage=off
 yabai -m rule --add app="^Archive Utility$" sub-layer=above manage=off
@@ -106,13 +124,16 @@ yabai -m rule --add app="^Activity Monitor$" sub-layer=above manage=off
 yabai -m rule --add app="^Finder$" manage=off sub-layer=above
 yabai -m rule --add app="^Calculator$" sub-layer=above manage=off
 yabai -m rule --add app="^Dictionary$" sub-layer=above manage=off
+yabai -m rule --add app="^Clock" sub-layer=above manage=off
+yabai -m rule --add app="^Contacts" sub-layer=above manage=off
 yabai -m rule --add app="^Music$" sub-layer=above manage=off
 yabai -m rule --add app="^Preview$" sub-layer=above manage=off
 yabai -m rule --add app="^Calendar$" sub-layer=above manage=off
 yabai -m rule --add app="^Reminders$" sub-layer=above manage=off
+yabai -m rule --add app="^Notes$" sub-layer=above manage=off
+yabai -m rule --add app="^Photos$" sub-layer=above manage=off
 
 # Applications
-yabai -m rule --add app="^Arc$" subrole='AXSystemDialog' manage=off
 yabai -m rule --add app='^Arc$' title='^Space.*$' manage=off
 yabai -m rule --add app='^Arc$' title='^Settings$' manage=off
 yabai -m rule --add app='^Arc$' title='^ColorSlurp$' manage=off
@@ -129,9 +150,8 @@ minimize_window "Spotify"
 minimize_window "Discord"
 minimize_window "Slack"
 minimize_window "Linear"
-minimize_window "Morgen"
 minimize_window "Secretive"
-minimize_window "ChatGPT"
+minimize_window "BoltAI"
 minimize_window "Bear"
 
 echo "yabai configuration loaded."

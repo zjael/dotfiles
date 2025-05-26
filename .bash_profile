@@ -9,6 +9,8 @@ source ~/.orbstack/shell/init.bash 2>/dev/null || :
 
 shopt -sq cdspell cmdhist extglob histappend
 
+
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/bin

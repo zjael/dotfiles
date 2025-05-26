@@ -85,8 +85,6 @@ cmd - 6 : yabai -m space --focus 6
 cmd - 7 : yabai -m space --focus 7
 cmd - 8 : yabai -m space --focus 8
 cmd - 9 : yabai -m space --focus 9
-cmd - left : yabai -m space --focus prev
-cmd - right : yabai -m space --focus next
 
 # move window and focus desktop
 shift + cmd - 1 : yabai -m window --space 1; yabai -m space --focus 1
@@ -117,14 +115,11 @@ cmd + alt - r : yabai -m window --scratchpad recover
 cmd - return : yabai -m window --toggle term || open -a iTerm2
 cmd + alt - s : yabai -m window --toggle spotify || open -a Spotify
 cmd + alt - x : yabai -m window --toggle linear || open -a Linear
-cmd + alt - c : yabai -m window --toggle morgen || open -a Morgen
-cmd + alt - z : yabai -m window --toggle chatgpt || open -a ChatGPT
+cmd + alt - c : yabai -m window --toggle ai || open -a BoltAI
 cmd + alt - w : yabai -m window --toggle bear || open -a Bear
 cmd + alt - d : if [[ "$(whoami)" == "work" ]]; then yabai -m window --toggle slack || open -a Slack; else yabai -m window --toggle discord || open -a Discord; fi
 
 # shortcuts
-#cmd - return : open -na iTerm
-cmd + shift - return : code
 alt - return : open -a Arc
 ctrl + cmd - r : yabai --restart-service && skhd --restart-service
 ctrl + cmd - c : code ~/.config

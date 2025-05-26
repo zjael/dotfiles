@@ -1,0 +1,43 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {}
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-k cmd-s": "zed::OpenKeymap",
+      "shift shift": "file_finder::Toggle",
+      "cmd-i": "assistant::InlineAssist",
+      "cmd-$": "workspace::ToggleBottomDock",
+      "shift-cmd-7": ["editor::ToggleComments", { "advance_downwards": false }]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal",
+      "cmd-n": "workspace::NewCenterTerminal",
+      "alt-right": "pane::ActivateNextItem",
+      "alt-left": "pane::ActivatePreviousItem",
+      "alt-,": "pane::SwapItemLeft",
+      "alt-.": "pane::SwapItemRight",
+      "alt-p": "pane::TogglePinTab"
+    }
+  },
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "k": "menu::SelectPrevious",
+      "j": "menu::SelectNext",
+      "x": "tab_switcher::CloseSelectedItem"
+    }
+  }
+]

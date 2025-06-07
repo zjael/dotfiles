@@ -129,17 +129,21 @@
   "remove_trailing_whitespace_on_save": false,
   "ensure_final_newline_on_save": true,
   "base_keymap": "VSCode",
-  "ui_font_size": 14,
-  "buffer_font_size": 13,
+  "ui_font_size": 12,
+  "ui_font_family": "Maple Mono NF",
+  "ui_font_weight": 500,
+  "buffer_line_height": "comfortable",
+  "buffer_font_size": 12,
+  "buffer_font_weight": 600,
   "icon_theme": "Catppuccin Mocha",
-  "buffer_font_family": "Maple Mono NF",
+  "buffer_font_family": "Menlo",
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "Catppuccin Espresso (Blur)"
   },
   "terminal": {
-    "font_family": "Maple Mono NF",
+    "font_family": "Menlo",
     "env": {
       "EDITOR": "zed --wait"
     }
